@@ -28,7 +28,7 @@ int main() {
              << std::endl;
 
    double z2 = foobar::mean(x,y);
-   std::cout << "foobar::mean(" << x << "," << y << ") = " << z2 
+   std::cout << "foobar::mean(" << x << "," << y << ") = "<< z2 
              << std::endl;
 
    return 0;
