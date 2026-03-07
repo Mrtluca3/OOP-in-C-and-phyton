@@ -9,20 +9,23 @@ namespace physics {
 
 namespace foobar {
   double mean(double a, double b) {
+    
+    using namespace std;
+    cout << "I'm in the foobar function" << endl;
     return (a*a+b*b)/2.;
   }
 }
 
 using namespace physics;
-using namespace std;
+// using namespace std;
 // using namespace foobar; // this will cause an error because of the name conflict between the two namespaces
 int main() {
 
    double x = 3, y = 4;
 
    double z1 = mean(x,y);
-   cout << "physics::mean(" << x << "," << y << ") = " << z1 
-             << endl;
+   std::cout << "physics::mean(" << x << "," << y << ") = " << z1 
+             << std::endl;
 
    double z2 = foobar::mean(x,y);
    std::cout << "foobar::mean(" << x << "," << y << ") = " << z2 
