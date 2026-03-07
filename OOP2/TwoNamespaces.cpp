@@ -1,0 +1,32 @@
+#include <iostream>
+
+
+namespace physics {
+  double mean(double a, double b) {
+    return (a+b)/2.;
+  }
+}
+
+namespace foobar {
+  double mean(double a, double b) {
+    return (a*a+b*b)/2.;
+  }
+}
+
+using namespace physics;
+using namespace std;
+// using namespace foobar; // this will cause an error because of the name conflict between the two namespaces
+int main() {
+
+   double x = 3, y = 4;
+
+   double z1 = mean(x,y);
+   cout << "physics::mean(" << x << "," << y << ") = " << z1 
+             << endl;
+
+   double z2 = foobar::mean(x,y);
+   std::cout << "foobar::mean(" << x << "," << y << ") = " << z2 
+             << std::endl;
+
+   return 0;
+}
