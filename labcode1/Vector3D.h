@@ -1,6 +1,7 @@
 
 #include <vector>
 #include <string>
+#include <cmath>
 
 #ifndef Vector3D_h
 #define Vector3D_h
@@ -20,7 +21,11 @@ class Vector3D
     //vector product
     Vector3D vect(const Vector3D& v2) const;
     //magnitude
-    inline double magnitude()const {return this->dot(*this);}
+    inline double magnitude()const {return sqrt(this->dot(*this));}
+    //polar component
+    double polar() const;
+    //azimuthal component
+    double azimuthal() const;
     
     void print(std::string comment="") const;
     

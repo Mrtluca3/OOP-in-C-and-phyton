@@ -43,5 +43,31 @@
         return v3;
     }
     
+double Vector3D::polar() const{
+    if(v.at(0)==0 && v.at(1)==0 && v.at(2)==0)
+     return 0.;
+    else if(v.at(0)==0 && v.at(1)==0)
+    {
+        double theta=acos(v.at(2)/magnitude());
+        return -v.at(2)*sin(theta);
+    }
+    else
+    {
+      double phi=atan2(v.at(1), v.at(0));
+      double theta=acos(v.at(2)/magnitude());
+      return (v.at(0)*cos(phi)+ v.at(1)*sin(phi) ) *cos(theta) -v.at(2)*sin(theta);
+    }
 
-    
+}
+    //azimuthal component
+double Vector3D::azimuthal() const
+{
+    if(v.at(0)==0 && v.at(1)==0)
+     return 0.;
+    else 
+    {
+      double phi=atan2(v.at(1), v.at(0));
+      return -v.at(0)* sin(phi)+v.at(1) * cos(phi); 
+    }
+} 
+
