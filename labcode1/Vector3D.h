@@ -26,10 +26,11 @@ class Vector3D
     double polar() const;
     //azimuthal component
     double azimuthal() const;
+    double angle(const Vector3D& v2) const;
     
     void print(std::string comment="") const;
     
-    
+    vector<double> get_v() const {return v;}
     private:
     vector<double> v;
 

@@ -71,3 +71,7 @@ double Vector3D::azimuthal() const
     }
 } 
 
+double Vector3D::angle( const Vector3D& v2) const {
+    double d=this->dot(v2);
+    return acos(d/ (this->magnitude() * v2.magnitude()));
+}
