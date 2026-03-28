@@ -3,17 +3,16 @@
 int main()
 {
     using namespace std;
-    Vector3D v(1, 0);
-    Vector3D v3(2, 2, 0);
+    std::cout << "counter: " << Vector3D::counts() <<std::endl;    
+    Vector3D v(0, 1);
+    Vector3D v3(0, 0, 1);
     Vector3D v4(v3);
     v4.print("v4");
     v4.print_spherical("v4 spherical");
-
     v.print("v1");
     v.print_spherical("v1 spherical");
-
     v3.print("v3");
-
+    std::cout << "counter: " << Vector3D::counts() <<std::endl;
     // std::cout <<"v.get(1): "<< v.get(1) << std::endl;
     // std::cout << "setting 2nd element to 1 ";
     // v.set(1, 1);
@@ -42,6 +41,7 @@ int main()
     //second option:
     // vin->input_v();
     // vin->print(" vector after input. Then delete");
+    std::cout << "counter: " << Vector3D::counts() <<std::endl;
     delete vin;
 
     std::cout<<"v3.v.size() "<<v3.get_v().size() <<std::endl;
@@ -51,5 +51,6 @@ int main()
     (v / 2).print("v1 /2");
     v=v3;
     v.print("v=v3");
+    std::cout << "counter: " << Vector3D::counts() <<std::endl; 
     return 0; 
 }

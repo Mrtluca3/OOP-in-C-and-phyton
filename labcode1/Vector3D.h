@@ -12,7 +12,7 @@ class Vector3D
     Vector3D(double a=0., double b=0., double c=0., bool Spherical=false);
     Vector3D(const Vector3D& v2);
     //dtor
-    ~Vector3D(){}
+    ~Vector3D(){counter_--;}
     //getter
     inline double get(int index)const {return v.at(index);}
     inline double get_spherical(int index)const {return vs.at(index);}
@@ -55,7 +55,12 @@ class Vector3D
     vector<double> get_v() const {return v;}
     vector<double> get_vs() const {return vs;}
 
+    //getter of counter 
+    static int counts() {
+        return counter_;
+    }
     private:
+    static int counter_;
     vector<double> v;
     vector<double> vs;
     // void clear_v() {v.clear();}

@@ -3,6 +3,7 @@
 
 
 //ctor 
+int Vector3D::counter_=0;
 Vector3D::Vector3D(double a, double b, double c, bool Spherical)
     {
         if (Spherical==false){
@@ -20,11 +21,13 @@ Vector3D::Vector3D(double a, double b, double c, bool Spherical)
             v.resize(3); 
             this->cartesian();           
         }
+        counter_++;
     }
 Vector3D::Vector3D(const Vector3D& v2)
     {
         v = v2.get_v();
         vs= v2.get_vs();
+        counter_++;
     }
 
 
