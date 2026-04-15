@@ -1,0 +1,29 @@
+Abstract1.cpp     
+ConstantFunction.h  
+# GraduateStudent.cc  
+# Polymorphism1.cpp  
+Polymorphism6.cpp  
+# Student.cc
+Abstract2.cpp
+execute/
+Function.cc         
+# GraduateStudent.h   
+Polymorphism2.cpp  
+Polymorphism7.cpp  
+# Student.h
+Abstract3.cpp        
+Function.h          
+NoVirtualDtor.cpp   
+Polymorphism3.cpp  
+Professor.cc       
+VirtualDtor.cpp
+BadFunction.cpp      
+Gauss.cc            
+# Person.cc           
+Polymorphism4.cpp  
+Professor.h        
+ConstantFunction.cc  
+Gauss.h             
+# Person.h            
+Polymorphism5.cpp  
+Revised
