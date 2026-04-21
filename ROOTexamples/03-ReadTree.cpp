@@ -38,10 +38,10 @@ int main(int argc, char* argv[]) {
 
   // ==== Read data from file
   // In order to access the data in a tree one needs
-  // 1) the name of the ROOT file where the tree is stored ("./data.root")
+  // 1) the name of the ROOT file where the tree is stored ("~/OOP_physics/execute/data.root")
   // 2) the name of the tree object ("datatree")
   // 3) the name of the branches ("value" and "error")
-  TString rootfname("./data.root"); // [1]
+  TString rootfname("~/OOP_physics/execute/mydata2.root"); // [1]
   TFile* infile = new TFile(rootfname);
   if( !infile->IsOpen() ) {
     std::cout << "problems opening root file " << rootfname << ". exiting... " << std::endl;
@@ -50,7 +50,7 @@ int main(int argc, char* argv[]) {
   std::cout << "Reading data from root file " << rootfname << std::endl;
 
   // Get pointer to tree object stored in the file
-  TTree* tree = (TTree*) infile->Get("datatree"); // [2]
+  TTree* tree = (TTree*) infile->Get("mydatatree"); // [2] you have to use the same name for data tree and branches!
   if(!tree) {
     std::cout << "null pointer for TTree " << tree << " ! exiting..." << std::endl;
     exit(-1);
@@ -60,8 +60,8 @@ int main(int argc, char* argv[]) {
   double y, dy;
 
   // Set the info for each branch of the tree to correspond to our data
-  tree->SetBranchAddress("value", &y);  // [3]
-  tree->SetBranchAddress("error", &dy); // [3]
+  tree->SetBranchAddress("valuebranch", &y);  // [3]
+  tree->SetBranchAddress("errorbranch", &dy); // [3]
 
   // Vector of Datum for data being read
   std::vector<Datum> data;
@@ -90,7 +90,7 @@ int main(int argc, char* argv[]) {
   canv.cd(2);
   hdx1.Fit("gaus");
   hdx1.Draw("pe");
-  canv.SaveAs("./newplots.pdf");
+  canv.SaveAs("~/OOP_physics/execute/newplots.pdf");
 
   // Critical to close the file we had opened!
   infile->Close();

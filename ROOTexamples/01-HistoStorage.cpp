@@ -12,7 +12,7 @@
 int main(int argc, char* argv[]) {
 
   // The string containing the name of the output file
-  TString rootfname("./output.root");
+  TString rootfname("./../execute/myoutput.root");
   // Open the output TFile and if it already exists overwite it
   TFile rfile(rootfname, "RECREATE");
   // Make sure the file was opened successfully.
@@ -49,7 +49,7 @@ int main(int argc, char* argv[]) {
   gen->SetSeed(0);
 
   // Number of measurements
-  int nsig = 1000;
+  int nsig = 10000;
 
   // Loop over the measurements
   for(int i=0; i<nsig; ++i) {
@@ -73,21 +73,23 @@ int main(int argc, char* argv[]) {
   // * plot
   hx1.Draw();
   // * store to file in 2 formats
-  canv.SaveAs("./x.pdf");
+  // canv.SaveAs("./x.pdf");
   canv.SaveAs("./x.jpg");
   // * move to the MEASURED values
   hdx1.GetXaxis()->SetTitle("Distribution of uncertainty \\Delta x [GeV]");
   // * in this case, show points with error bars
   hdx1.Draw("pe");
-  canv.SaveAs("./dx.pdf");
-  canv.SaveAs("./dx.jpg");
+  hdx1.SetFillColor(kGreen);
+
+  // canv.SaveAs("./dx.pdf");
+  // canv.SaveAs("./dx.jpg");
 
   // A simple example of fitting with predefined functions
   // https://root.cern.ch/root/htmldoc/guides/users-guide/FittingHistograms.html
   // * fit histogram of MEASURED values with Gaussian function
   hdx1.Fit("gaus");
-  hdx1.Draw();
-  canv.SaveAs("./dxfit.pdf");
+  // hdx1.Draw();
+  // canv.SaveAs("./dxfit.pdf");
   canv.SaveAs("./dxfit.jpg");
 
   // Delete the random generator now we are done with it
@@ -95,6 +97,7 @@ int main(int argc, char* argv[]) {
   delete gen;
 
   // Store both histograms to file
+  std::cout << "Saving in the file" << std::endl; 
   hx1.Write();
   hdx1.Write();
 

@@ -23,7 +23,7 @@ int main(int argc, char* argv[]) {
   // 1) name of the ROOT file where the tree is stored ("./data.root")
   // 2) name of the tree object ("datatree")
   // 3) name of the branches ("value" and "error"): DataTree.C takes care of this!
-  TString rootfname("./data.root"); // [1]
+  TString rootfname("./mydata4.root"); // [1]
   TFile* infile = TFile::Open(rootfname);
   if( !infile->IsOpen() ) {
     std::cout << "problems opening root file: exiting... " << std::endl;

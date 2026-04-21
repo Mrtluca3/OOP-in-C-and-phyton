@@ -14,7 +14,7 @@ int main() {
   h1.GetYaxis()->SetTitle("arbitrary Units");
 
   // create a canvas to draw tower histogram
-  TCanvas c1("c1","my canvas",1024,800);
+  TCanvas c1("c1","my canvas",2000,1000);
 
   // draw the histogram
   h1.Draw();
@@ -23,11 +23,11 @@ int main() {
   c1.SaveAs("canvas.jpg");
 
   // change fill color to blue
-  h1.SetFillColor(kBlue);
+  h1.SetFillColor(kGreen);
 
   // draw again the histogram
   h1.Draw();
-  c1.SaveAs("canvas-blue.jpg");
+  c1.SaveAs("canvas-green.jpg");
 
   // draw histograms as points with errors
   h1.Draw("pe");

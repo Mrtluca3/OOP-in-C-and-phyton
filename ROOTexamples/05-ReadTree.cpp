@@ -40,10 +40,10 @@ int main(int argc, char* argv[]) {
 
   // ==== Read data from file
   // In order to access the data in a tree one needs
-  // 1) name of the ROOT file where the tree is stored ("./data.root")
+  // 1) name of the ROOT file where the tree is stored ("~/OOP_physics/execute/mydata3.root")
   // 2) name of the tree object ("datatree")
   // 3) name of the branches ("value", "error" and "nmeas")
-  TString rootfname("./data.root"); // [1]
+  TString rootfname("~/OOP_physics/execute/mydata3.root"); // [1]
   TFile* infile = new TFile(rootfname);
   if( !infile->IsOpen() ) {
     std::cout << "problems opening root file: exiting... " << std::endl;
@@ -52,7 +52,7 @@ int main(int argc, char* argv[]) {
   std::cout << "Reading data from root file " << rootfname << std::endl;
 
   // Get pointer to tree object stored in the file
-  TTree* tree = (TTree*) infile->Get("datatree"); // [2]
+  TTree* tree = (TTree*) infile->Get("newdatatree2"); // [2]
   if(!tree) {
     std::cout << "null pointer for TTree! exiting..." << std::endl;
     exit(-1);
@@ -105,7 +105,7 @@ int main(int argc, char* argv[]) {
   h2RMS.GetXaxis()->SetTitle("Number of measurements");
   h2RMS.GetYaxis()->SetTitle("dx RMS");
   h2RMS.Draw("colz");
-  canv.SaveAs("./2dRMS.pdf");
+  canv.SaveAs("~/OOP_physics/execute/2dRMS.pdf");
 
   // Plot with 1D histograms in 3 distinct panels
   canv.Clear();
@@ -118,7 +118,7 @@ int main(int argc, char* argv[]) {
   hdxRMS.Draw("pe");
   canv.cd(3);
   hdx1.Draw();
-  canv.SaveAs("./expplots.pdf");
+  canv.SaveAs("~/OOP_physics/execute/expplots.pdf");
 
   // Critical to close the file we had opened!
   infile->Close();

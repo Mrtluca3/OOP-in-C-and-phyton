@@ -34,7 +34,7 @@ int main(int argc, char* argv[]) {
 
   // ==== Store data in a TTree
   // Open a root file
-  TString rootfname("./data.root");
+  TString rootfname("~/OOP_physics/execute/mydata4.root");
   TFile* orootfile = new TFile( rootfname, "RECREATE");
   if( !orootfile->IsOpen() ) {
     std::cout << "problems creating root file: exiting... " << std::endl;
@@ -43,7 +43,7 @@ int main(int argc, char* argv[]) {
   std::cout << "storing output in root file " << rootfname << std::endl;
 
   // Create a new TTree object with branch suited for Datum objects
-  TTree* tree = new TTree("datatree", "tree containing our data");
+  TTree* tree = new TTree("mydatatree3", "tree containing our data");
 
   // Variables to be stored in the tree
   Datum  datapoint;

@@ -25,8 +25,8 @@ int main(int argc, char* argv[]) {
   // 2) the VALUE MEASURED by the detector, taking into account its resolution
   // The range [x1,x2] for step 1
   double x1=0.9, x2=1.1;
-  // For step 2 we condider a gaussian resolution of 10%
-  double resol = 0.10;
+  // For step 2 we condider a gaussian resolution of 20%
+  double resol = 0.20;
 
   // Get ready to create histograms containing the TRUE and MEASURED samples
   // The histogram limits are set as a function of interval and resolution
@@ -73,7 +73,7 @@ int main(int argc, char* argv[]) {
   // After generating the data, we take care of plotting the results
   TCanvas canv("canv", "canvas for plotting", 1280, 1024);
 
-  // Show all statistical and fit parameters
+  // Show all statistical and fit parameters with the following 2 lines:
   // https://root.cern.ch/doc/master/classTPaveStats.html
   gStyle->SetOptStat(111111);
   gStyle->SetOptFit(1111);
@@ -81,11 +81,11 @@ int main(int argc, char* argv[]) {
   // Provide an x-axis label and store to pdf
   hx1.GetXaxis()->SetTitle("Distribution of x [GeV]");
   hx1.Draw();
-  canv.SaveAs("./x.pdf");
+  canv.SaveAs("~/OOP_physics/execute/x.pdf");
 
   hdx1.GetXaxis()->SetTitle("Distribution of uncertainty \\deltax [GeV]");
   hdx1.Draw("pe");
-  canv.SaveAs("./dx.pdf");
+  canv.SaveAs("~/OOP_physics/execute/dx.pdf");
 
   // Create and store a figure with with three panels:
   // the canvas contains 2x2 panels and the first 3 are used.
@@ -101,11 +101,11 @@ int main(int argc, char* argv[]) {
   hpull.GetXaxis()->SetTitle("Distribution of (x-x0)/\\deltax");
   hpull.Fit("gaus");
   hpull.Draw();
-  canv.SaveAs("./plots.pdf");
+  canv.SaveAs("~/OOP_physics/execute/plotsmultiple.pdf");
 
   // Store output to file
-  std::ofstream ofile;
-  std::string ofname("./data.txt");
+  std::ofstream ofile; //output file stream: use to create a dataframe tabular
+  std::string ofname("~/OOP_physics/execute/data.txt");
   std::cout << "storing data in " << ofname << std::endl;
   ofile.open( ofname );
 
@@ -118,7 +118,7 @@ int main(int argc, char* argv[]) {
 
   // ==== store data in a TTree
   // Open a root file
-  TString rootfname("./data.root");
+  TString rootfname("~/OOP_physics/execute/mydata2.root");
   // RECREATE: create a new file; if the file already exists it will be overwritten
   TFile* orootfile = new TFile( rootfname, "RECREATE");
   if( !orootfile->IsOpen() ) {
@@ -128,8 +128,8 @@ int main(int argc, char* argv[]) {
   std::cout << "storing output in root file " << rootfname << std::endl;
 
   // Create a new TTree object
-  TTree* tree = new TTree("datatree", "tree containing our data");
-  // The name of the TTree object (datatree), and not the name of the C++
+  TTree* tree = new TTree("mydatatree", "tree containing our data");
+  // The name of the TTree object (mydatatree), and not the name of the C++
   // variable (tree), is important because ROOT stores all objects in a
   // TFile with their names
   
@@ -138,12 +138,12 @@ int main(int argc, char* argv[]) {
   // Set the info for each branch of the tree to correspond to our data:
   // * we set the reference to x and dx in the two branches value and error of the tree
   // A Branch function has 3 arguments:
-  // * the branch name
-  // * a pointer to variable in memory
-  // * the type of the variable in the branch ("value/D" which is a double)
+  // 1) the branch name
+  // 2) a pointer to variable in memory
+  // 3) the type of the variable in the branch ("value/D" which is a double)
   // NOTE THAT "D" INDICATES THE SIZE OF A DOUBLE HERE.
-  tree->Branch("value", &x,  "value/D");
-  tree->Branch("error", &dx, "error/D");
+  tree->Branch("valuebranch", &x,  "value/D");
+  tree->Branch("errorbranch", &dx, "error/D");
 
   // Take care of the leaves
   // * iterate over the data to be stored
@@ -153,6 +153,7 @@ int main(int argc, char* argv[]) {
     // Assign values to C++ variables that are going to be stored in the branch
     x = it->value();
     dx = it->error();
+    /////////////////////////////////////////STORE IN THE TREE//////////////////////
     // Store data in tree IN MEMORY on the basis of the tree->Branch(...) calls
     tree->Fill();
   }
@@ -161,6 +162,7 @@ int main(int argc, char* argv[]) {
   tree->Write();
 
   // Print some info about the tree
+  std::cout << "Print some info about the tree with tree->Print()"<< std::endl;
   tree->Print();
 
   // ==== Done using the TTree
