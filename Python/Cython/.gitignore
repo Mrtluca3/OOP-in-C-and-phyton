@@ -1,0 +1,8 @@
+__pycache__  
+build  
+fib_cython.c  
+fib_cython.cpython-312-x86_64-linux-gnu.so  
+# fib_cython.pyx  
+# fib_orig.py  
+# measure_fib.py  
+# setup.py

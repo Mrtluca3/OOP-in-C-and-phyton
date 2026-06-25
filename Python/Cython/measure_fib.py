@@ -1,6 +1,6 @@
 import timeit
 
-command = '''fib.fibonacci(10000)'''
+command = '''fib.fibonacci(100000)'''
 its = 100
 
 # Measure the performance of the pure Python calculation
@@ -11,7 +11,7 @@ py = timeit.timeit(command,
 # Measure the performance of the Cythonized calculation
 cy = timeit.timeit(command,
                    setup='import fib_cython as fib',
-                   number=its)
+                   number=its, )
 
 # Report comparison 
 print(f'Cython is {py/cy} times faster')

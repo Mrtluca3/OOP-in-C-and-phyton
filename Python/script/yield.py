@@ -30,7 +30,7 @@ def fibonacci():
     # Endless sequence
     while True:
         yield a
-        a, b = b, a + b
+        a, b = b, a + b #first evaluation then assigned
 
 # The following does not create an infinite number of Fibonacci numbers and
 # store them, but is ready to go through as many as needed (10 in this case)
