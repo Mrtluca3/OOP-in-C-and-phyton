@@ -3,7 +3,9 @@
 RegularHexagon::RegularHexagon(const std::string& name, const double l, const double a): Shape(name){
     a_=a;
     l_=l;
+    vertices += 6; 
     std::cout << "Ctor of RegularHexagon: " << name <<std::endl;
+    std::cout << "Number of vertices: " << vertices << std::endl;
 }
 
 double RegularHexagon::Perimeter(){return 6.*l_; }

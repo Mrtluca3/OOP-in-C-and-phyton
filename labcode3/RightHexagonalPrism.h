@@ -1,7 +1,8 @@
-#include "Shape.h"
-#include "RightPrism.h"
+
 #ifndef RightHexagonalPrism_h
 #define RightHexagonalPrism_h
+#include "Shape.h"
+#include "RightPrism.h"
 class RightHexagonalPrism: public RightPrism{
         public: 
         RightHexagonalPrism(const double& l=1., const double& a=1., const double& h=1., const std::string& name="Right Hexagoanl Prism");
@@ -15,6 +16,7 @@ class RightHexagonalPrism: public RightPrism{
         virtual ~RightHexagonalPrism() {
             delete base();
             resetbase();
+            vertices-=12;
             std::cout<< "Dtor RightHexagonalPrism: " << name() << std::endl; 
         }
          

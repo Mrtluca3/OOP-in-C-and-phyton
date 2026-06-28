@@ -1,7 +1,8 @@
-#include "Shape.h"
 
 #ifndef RightPrism_h
 #define RightPrism_h
+#include "Shape.h"
+
 class RightPrism: public Shape {
     public: 
         RightPrism(const double& h=1., Shape* base=nullptr, const std::string& name="RightPrism");

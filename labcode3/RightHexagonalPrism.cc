@@ -3,6 +3,9 @@
 RightHexagonalPrism::RightHexagonalPrism(const double& l, const double& a, const double& h, const std::string& name): 
     RightPrism(h, new RegularHexagon("Hexagonal base of "+name, l, a), name){
     std::cout << "Ctor of RightHexagonalPrism: " << name <<std::endl;
+    vertices += 12;
+    
+    std::cout << "Number of vertices: " << vertices << std::endl; 
 }
 void RightHexagonalPrism::print(){
     std::cout<< "Print of Right Hexagon Prism " << name() << std::endl;

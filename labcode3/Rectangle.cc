@@ -2,7 +2,9 @@
 Rectangle::Rectangle(const double l1, const double l2, const std::string& name,): Shape(name) {
     l1_=l1;
     l2_=l2;
+    vertices += 4; 
     std::cout << "Ctor of Rectangle: " << name <<std::endl;
+    std::cout << "Number of vertices: " << vertices << std::endl;
 } 
 
 //here you need the type of the function

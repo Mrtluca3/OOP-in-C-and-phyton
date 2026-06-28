@@ -14,6 +14,8 @@ class Shape {
         std::string name(){return name_;}
 
         virtual ~Shape(){std::cout<< "Dtor Shape: " << name_ << std::endl; } 
+    
+        static int vertices; 
     private:
         std::string name_;
 };
