@@ -1,0 +1,18 @@
+#ifndef Function_h
+#define Function_h
+#include <iostream>
+class Function {
+public:
+Function(const std::string& name) { name_ = name; };
+~Function() = default;
+// Value of the function at a point along the x-axis
+virtual double value(double x, double y, double z) const = 0;
+// Derivative of the function calculated at a point along the x-axis
+virtual double deriv(double x, double y, double z, char var) const = 0;
+
+
+virtual std::string name() const { return name_; };
+private:
+std::string name_;
+};
+#endif
