@@ -24,11 +24,11 @@ class DualNumber {
     DualNumber conj() const {return DualNumber(a_, -b_);}
 
     //operators of + and *
-    DualNumber operator+(const DualNumber& dn); //d+d
-    DualNumber operator+(const double& r); //d+r
+    DualNumber operator+(const DualNumber& dn) const ; //d+d
+    DualNumber operator+(const double& r) const; //d+r
     
-    DualNumber operator*(const DualNumber& dn); //d*d
-    DualNumber operator*(const double& r); //d*r
+    DualNumber operator*(const DualNumber& dn) const ; //d*d
+    DualNumber operator*(const double& r) const; //d*r
 
 
     private:

@@ -19,20 +19,20 @@ std::ostream& operator<<(std::ostream& os, const DualNumber& dn){
 
 
 //operators of + and *
-DualNumber DualNumber::operator+(const DualNumber& dn){ //d+d
+DualNumber DualNumber::operator+(const DualNumber& dn) const{ //d+d
     return DualNumber(A()+dn.A(), B() + dn.B());
 }
 
 
-DualNumber DualNumber::operator+(const double& r){ //d+r
+DualNumber DualNumber::operator+(const double& r) const{ //d+r
     return DualNumber(A()+r, B());
 }
 
-DualNumber DualNumber::operator*(const DualNumber& dn){ //d*d
+DualNumber DualNumber::operator*(const DualNumber& dn) const{ //d*d
     return DualNumber(A()*dn.A(), A()*dn.B() + dn.A() * B() );
 }
 
-DualNumber DualNumber::operator*(const double& r){ //d*r
+DualNumber DualNumber::operator*(const double& r) const{ //d*r
     return DualNumber(A()*r, B()*r);
 }
 
